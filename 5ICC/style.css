@@ -1,0 +1,327 @@
+/* andreas01 - an open source xhtml/css website layout by Andreas Viklund (http://andreasviklund.com). Made for OSWD.org, free to use as-is for any purpose as long as the proper credits are given for the original design work. For design assistance and support, contact me through my website or through http://oswd.org/email.phtml?user=Andreas
+
+Version: 1.0
+(July 25, 2005)
+
+(Modified by LCB : 01-Dec-2008)
+
+Screen layout: */
+
+body {
+	margin: 0 auto;
+	padding: 0;
+	font: 76% Verdana,Tahoma,Arial,sans-serif;
+}
+
+#wrap {
+	background: #ffffff;
+	color: #303030;
+	margin: 0 auto;
+	width: 760px;
+}
+
+#header {
+	clear: both;
+	margin: 20px 0 0 0;
+	padding: 0;
+	height: 45px;
+}
+
+#header h1 {
+	width: 350px;
+	margin: 0 0 10px 0;
+	float: left;
+}
+
+#header p {
+	width: 500px;
+	float: right;
+	text-align: right;
+	color: #a0a0a0;
+	margin: 0 0 10px 0;
+	font-size: 0.8em;
+	line-height: 1.2em;
+}
+
+#frontphoto {
+	margin: 0 0 10px 0;
+	border: 0;
+}
+
+#navigate {
+	clear: left;
+	float: left;
+	width: 150px;
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-size: 0.9em;
+}
+
+#navigate ul {	
+	list-style: none;
+	width: 150px;
+	margin: 0 0 20px 0;
+	padding: 0;
+	font-size: 1.1em;
+}	
+
+#navigate li {
+	margin-bottom: 4px;
+}
+
+#navigate li a {
+	font-weight: bold;
+	height: 20px;
+	text-decoration: none;
+	color: #505050;
+	display: block;
+	padding: 6px 0 0 10px;
+	background: #f4f4f4;
+	border-left: 4px solid #cccccc;
+}	
+
+#navigate li a:hover {
+	background: #eaeaea;
+	color: #286ea0;
+	border-left: 4px solid #286ea0;
+}
+
+.announce {
+	margin: 10px 0 10px 0;
+	padding: 10px;
+	width: 130px;
+	color: #505050;
+	background-color: #f4f4f4;
+	line-height: 1.3em;
+}
+
+#extras {
+	float: right;
+	width: 100px;
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-size: 0.9em;
+	line-height: 1.5em;
+}
+
+#extras p {
+	margin: 0 0 1.5em 0;
+}
+
+/* --- table stuff ------------------------------------------------------------------- */
+
+#base-layer {
+	float: left;
+	background: none #ffffff; border: 0px dotted #333333 0px; color: #000000;
+	margin: 0em 0px 0em 0px; padding: 0px; text-align: center; width: 589px;
+}
+
+#table-row {
+	float: left;
+	background: none #ffffff; border: 0px dotted #ff0000 0px; color: #000000;
+	margin-top: 0; margin-right: auto; margin-bottom: 0; margin-left: 0px;
+	padding: 0; text-align: left; width: 100%;
+}
+
+#left-container {
+	font-weight: bold; 
+	background: none #ffffff;
+	border: 0px dotted gray; float: left; margin: 0px 0px 0px 2px; padding: 0px; width: 17%;
+}
+
+#right-container {
+	background: none #ffffff;
+	border: 0px dotted gray; float: left; margin: 0px 0px 5px 0px; padding: 0px; width: 78%;
+}
+
+#space-line {
+	border: 0px dotted gray; clear: both; margin: 0px; padding: 0; width: auto;
+}
+
+#title {
+	background: none #e4e4e4; color: #3333cc;
+	margin: 0px 0px 5px 0px; padding: 0; text-align: left; width: auto;
+	font-size: 1em; font-style: italic; font-weight: none; font-family: sans-serif;
+}
+
+#title a {
+	display: block;
+	text-decoration: none;
+	background: none #d0d0d0; color: #3333cc;
+	margin: 0px; padding: 2px;
+}
+
+#title a:hover {
+	background: #eaeaea; color: #ff5555;
+}
+
+/* ----------------------------------------------------------------------------------- */
+
+/* --- table-alt stuff --------------------------------------------------------------- */
+
+#left-container-alt {
+	font-weight: bold; 
+	background: none #ffffff;
+	border: 0px dotted gray; float: left; margin: 0px 0px 0px 5px; padding: 0px; width: 45%;
+}
+
+#right-container-alt {
+	background: none #ffffff;
+	text-align: right;
+	border: 0px dotted gray; float: left; margin: 0px 0px 15px 0px; padding: 0px; width: 45%;
+}
+
+#title-alt {
+	float: left;
+	background: none #e4e4e4; color: #3333cc;
+	margin: 0px 0px 5px 0px; padding: 0; text-align: left; width: 92%;
+	font-size: 1em; font-style: italic; font-weight: none; font-family: sans-serif;
+}
+
+#title-alt a {
+	display: block;
+	text-decoration: none;
+	background: none #d0d0d0; color: #3333cc;
+	margin: 0px; padding: 2px;
+}
+
+#title-alt a:hover {
+	background: #eaeaea; color: #ff5555;
+}
+
+#details-alt {
+	float: right;
+	background: none #e4e4e4; color: #3333cc;
+	margin: 0px 0px 5px 0px; padding: 0; text-align: center; width: auto;
+	font-size: 1em; font-style: italic; font-weight: none; font-family: sans-serif;
+}
+
+#details-alt a {
+	display: block;
+	text-decoration: none;
+	background: none #d0d0d0; color: #3333cc;
+	margin: 0px; padding: 2px;
+}
+
+#details-alt a:hover {
+	background: #eaeaea; color: #ff5555;
+}
+
+/* ----------------------------------------------------------------------------------- */
+
+#content {
+	margin: 0 0px 20px 160px;
+	border-left: 1px solid #f0f0f0;
+	padding: 0 10px 0 10px;
+	line-height: 1.6em;
+	text-align: left;
+}
+
+#content h2 {
+	font-size: 1.5em;
+	margin: 0 0 0.5em 0;
+}
+
+#content img {
+	padding: 1px;
+	display:inline;
+	background: #cccccc;
+	border: 4px solid #f0f0f0;
+}
+
+h3 {
+	font-size: 1.3em;
+	margin: 0 0 10px 0;
+}
+
+a {
+	text-decoration: none;
+	color: #286ea0;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #286ea0;
+}
+
+a img {
+	border: 0;
+}
+
+#footer {
+	clear: both;
+	margin: 0 auto;
+	padding: 10px 0 20px 0;
+	border-top: 4px solid #f0f0f0;
+	width: 760px;
+	text-align: center;
+	color: #808080;
+	font-size: 0.9em;
+}
+
+#footer a {
+	color: #808080;
+	text-decoration: none;
+}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+.left {
+	margin: 10px 10px 5px 0;
+	float: left;
+}
+
+.right {
+	margin: 10px 0 5px 10px;
+	float: right;
+}
+
+.textright {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.small {
+	font-size: 0.8em;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.hide {
+	display: none;
+}
+
+/* 
+* {
+	padding: 0;
+	margin: 0
+}
+*/
+dl {
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+	margin: 0
+}
+dt {
+	float: left;
+	width: 7%;
+	padding: 0;
+	margin: 0
+	/* adjust the width; make sure the total of both is 100% */
+}
+dd {
+	float: left;
+	width: 93%;
+	padding: 0;
+	margin: 0
+	/* adjust the width; make sure the total of both is 100% */
+}
+
