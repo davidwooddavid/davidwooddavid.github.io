@@ -4,8 +4,8 @@ document.write('\
 <h2 class="hide">Menu:</h2>\
 <ul>\
 	<li><a href="index.html">Home</a></li>\
-	<li><a href="publications.html">Publications</a></li>\
 	<li><a href="news.html">News</a></li>\
+	<li><a href="publications.html">Publications</a></li>\
 	<li><a href="collaborators.html">Collaborators</a></li>\
 	<li><a href="editorial.html">Editorial</a></li>\
 	<li><a href="workshops.html">Workshops</a></li>\
