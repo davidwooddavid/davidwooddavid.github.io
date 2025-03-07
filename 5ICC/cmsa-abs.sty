@@ -1,0 +1,145 @@
+%% Simple style file for 5ICC abstract booklet
+%%
+\setlength{\textwidth}{6.3in}
+\setlength{\textheight}{8.9in}
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+
+\makeatletter
+
+\let\b@da=N
+\let\b@db=N
+\def\thisis#1#2{\immediate\write\@auxout{\string\me@ning{#1}{#2}}}
+\def\thispageis#1{\write\@auxout{\string\me@ning{#1}{\the\count0}}}
+\def\me@ning#1#2{\expandafter\gdef\csname#1\endcsname{#2}}
+\def\whatis#1{\expandafter\ifx%
+  \csname#1\endcsname\relax ??%
+  \write16{"#1" is undefined!}\let\b@da=Y\else\csname#1\endcsname\fi}
+\def\whatisopt#1#2{\expandafter\ifx
+  \csname#1\endcsname\relax\whatis{#2}\else
+  \csname#1\endcsname\fi}
+\def\abstract#1{\InputIfFileExists{#1}{}{%
+  \write16{File "#1" was not found!}\let\b@db=Y}}
+\def\page#1{\whatis{#1-page}\unskip}
+\def\speaker#1{\whatis{#1-speaker}\unskip}
+\def\title#1{{\let\\=\relax\whatis{#1-title}\unskip}}
+\let\Title=\title
+\def\short#1{{\let\\=\relax\whatisopt{#1-short}{#1-title}\unskip}}
+\let\Short=\short
+\def\ams#1{\whatis{#1-ams}\unskip}
+\AtEndDocument{%
+\ifx\b@da Y\write16{MISSING DEFINITIONS, try running Latex again!}\else\fi%
+\ifx\b@db Y\write16{MISSING FILES!}\else\fi}
+\let\p@r=\par
+\let\br@@k=\\
+
+\let\v@@=\v \let\aa@@=\' \let\ga@@=\` \let\um@@=\"
+\let\twid@@=~ \let\ldots@@=\ldots \let\c@@=\c
+
+\def\sp@X#1\end@X{\gdef\thespeaker{#1\unskip}}
+\def\au@X#1\end@X{\gdef\theauthor{#1\unskip}}
+\def\title@X#1\end@X{\gdef\thetitle{#1\unskip}}
+\def\aff@X#1\end@X{\gdef\theaffiliation{#1\unskip}}
+\def\ams@X#1\end@X{\gdef\theams{#1\unskip}}
+\def\short@X#1\end@X{\gdef\theshort{#1\unskip}}
+\def\text@X#1\end@X{}
+\long\def\t@a#1\text{\let\text=\relax\t@b}
+\long\def\t@b{\let\sp=\t@c\let\au=\t@c\let\title=\t@c
+ \let\aff=\t@c\let\ams=\t@c\let\short=\t@c}
+\long\def\t@c#1\t@z{}
+\let\t@z=\relax
+
+\long\def\abs#1 #2\text#3\endabs{%
+\def\sp{\noexpand\end@X\noexpand\sp@X}%
+\def\au{\noexpand\end@X\noexpand\au@X}%
+\def\aff{\noexpand\end@X\noexpand\aff@X}%
+\def\title{\noexpand\end@X\noexpand\title@X}%
+\def\ams{\noexpand\end@X\noexpand\ams@X}%
+\def\short{\noexpand\end@X\noexpand\short@X}%
+\let\\=\relax
+\let\end@X=\relax
+\def\par{}
+\let\v=\relax \let\'=\relax \let\`=\relax \let\"=\relax
+\let\c=\relax \let~=\relax \let\ldots=\relax
+\edef\allabs{#2\noexpand\end@X}%
+\let\thespeaker=\relax
+\let\theauthor=\relax
+\let\thetitle=\relax
+\let\theshort=\relax
+\let\theaffiliation=\relax
+\let\theams=\relax
+\allabs
+\let\par=\p@r
+\let\title=\Title
+\let\short=\Short
+\long\gdef\thetext{#3}
+\ifx\thespeaker\relax\thisis{#1-speaker}{\theauthor}\else
+ \thisis{#1-speaker}{\thespeaker}\fi
+\ifx\thetitle\relax\else\thisis{#1-title}{\thetitle}\fi
+\ifx\theshort\relax\else\thisis{#1-short}{\theshort}\fi
+\ifx\theams\relax\else\thisis{#1-ams}{\theams}\fi
+\let\v=\v@@ \let\'=\aa@@ \let\`=\ga@@ \let\"=\um@@ \let\c=\c@@
+\let\\=\br@@k \let~=\twid@@ \let\ldots=\ldots@@
+\typesetabs{#1}}
+
+\def\mk{{${}^\ast$}}
+
+\widowpenalty=1000
+\def\daytime#1{\expandafter\ifx\csname#1-day\endcsname\relax\else
+ \ifvmode\penalty1000\noindent\else\hskip1em plus10em
+  \penalty0\fi(\whatis{#1-day}~\whatis{#1-time})\fi}
+
+\long\def\typesetabs#1{\iffullbook
+{\vskip 50pt plus 120pt
+ \penalty-120
+{\centering
+ {\parbox{1\textwidth}{\large\centering
+        \textbf{\Large\thetitle}}\par}\nobreak\vspace{3ex}
+ \thispageis{#1-page}%
+ \theauthor\par\nobreak\medskip
+ \ifx\theaffiliation\relax\bigskip\else
+   \textit{\theaffiliation}\par\nobreak\medskip
+ \fi
+}\medskip
+ \ifx\thetext{\rm\daytime{#1}}\else
+   \medskip\noindent\thetext{\rm\daytime{#1}}\par
+ \fi
+}{}}%
+
+\def\pg#1{\iffullbook{(p\page{#1})}{}}
+\def\uspac{{\vrule height 12pt width 0pt depth 0pt}}
+\def\dspac{{\vrule height 0pt width 0pt depth 4pt}}
+\def\bspac{{\vrule height 18pt width 0pt depth 8pt}}
+\def\vspac{{\vrule height 18pt width 0pt depth 12pt}}
+\def\nothin@{}
+
+\def\setcontrib#1#2{\def\n@lltest{#1}\ifx\n@lltest\nothin@
+\parbox{0.4\linewidth}{\uspac\dspac}\else
+  \thisis{#1-time}{\thetime}\thisis{#1-day}{\theday}%
+\parbox{0.4\linewidth}{\small\raggedright\uspac
+   \hbox{\speaker{#1}}\quad{\it\short{#1}\\ \rm\pg{#1} \hfill Chair: {#2}} \dspac}\fi}
+
+\def\setinvited#1#2{\def\n@lltest{#1}\ifx\n@lltest\nothin@
+\parbox{0.8\linewidth}{\uspac\dspac}\else
+  \thisis{#1-time}{\thetime}\thisis{#1-day}{\theday}%
+\parbox{0.8\linewidth}{\raggedright\uspac
+   \hbox{\bf\speaker{#1}}\quad{\it\short{#1}\\ \rm\pg{#1} \hfill Chair: {#2}} \dspac}\fi}
+
+\def\contrib#1#2#3#4#5{\gdef\thetime{#1}%
+#1&\setcontrib{#2}{#4}&\setcontrib{#3}{#5}\\ \lyn}
+
+\def\invited#1#2#3{\gdef\thetime{#1}%
+#1&\multicolumn{2}{l|}{\setinvited{#2}{#3}}\\ \lyn}
+
+\def\both#1#2{\omit\hfil#1\hfil\bspac&\multicolumn{2}{c}{#2}\dspac\\ \lyn}
+\def\bothnolyn#1#2{\omit\hfil#1\hfil\bspac&\multicolumn{2}{c}{#2}\dspac\\}
+\def\lyn{\cline{2-3}}
+\def\bigger{\Large}
+
+\let\fullbook=Y
+\long\def\iffullbook#1#2{\ifx\fullbook Y#1\else#2\fi}
+
+\makeatother
