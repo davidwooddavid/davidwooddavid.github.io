@@ -11,12 +11,27 @@ document.write('\
 	<li><a href="workshops.html">Workshops</a></li>\
 	<li><a href="publishing.html">Publishing</a></li>\
 	<li><a href="history.html">History</a></li>\
-	<li><a href="erdos.html">Erd&#337;s number</a></li>\
 	<li><a href="students.html">Students</a></li>\
 	<li><a href="teaching.html">Teaching</a></li>\
-	<li><a href="sport.html">Sport</a></li>\
-	<li><a href="contact.html">Contact</a></li>\
 </ul>\
 </div>\
 \
 ');
+document.addEventListener("DOMContentLoaded", function () {
+  let currentPage =
+    window.location.pathname.split("/").pop() || "index.html";
+
+  // Highlight Programme for the extended programme too.
+  if (currentPage === "extended-programme.html") {
+    currentPage = "programme.html";
+  }
+
+  document.querySelectorAll("#navigate a").forEach(function (link) {
+    const linkedPage =
+      new URL(link.href).pathname.split("/").pop() || "index.html";
+
+    if (linkedPage === currentPage) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+});
